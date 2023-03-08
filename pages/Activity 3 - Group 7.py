@@ -1,7 +1,9 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
-
+import streamlit as st
+import pandas as pd
+from io import StringIO
 
 #translation
 def Translation(img, x, y, width, height):
@@ -83,7 +85,15 @@ def Shear(img, direction, amount, width, height):
     
 
 def main():
-    images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.png"]
+    
+
+    uploaded_file = st.file_uploader("Choose a file")
+    if uploaded_file is not None:
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        st.write(stringio)
+    
+    image = stringio
+    
     x = int(input("Enter translation_x: "))
     y = int(input("Enter translation_y: "))
     rot = int(input("Enter rotation in degrees: "))
@@ -92,24 +102,22 @@ def main():
     skew = float(input("Enter skew amount (-1 to 1): "))
     skew_dir = str(input("Enter skew direction: "))
 
-    for image in images:
+    img_ = cv2.imread(image)
+    img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
+    width = img_.shape[0]
+    height = img_.shape[1]
+
+    functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, 'vertical', width, height), Shear(img_, skew_dir, skew, width, height)]
+
+    for f in functions:
         img_ = cv2.imread(f"{image}")
         img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
-        
-        width = img_.shape[0]
-        height = img_.shape[1]
 
-        functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, 'vertical', width, height), Shear(img_, skew_dir, skew, width, height)]
-        
-        for f in functions:
-            img_ = cv2.imread(f"{image}")
-            img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
-            
-            img_ = f
-            plt.axis('off')
-            plt.imshow(img_)
-            plt.show()
+        img_ = f
+        plt.axis('off')
+        plt.imshow(img_)
+        plt.show()
 
 if __name__ == '__main__':
     main()

@@ -89,10 +89,8 @@ def main():
 
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        st.write(stringio)
-    
-    image = stringio
+        image = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        st.write(image)
     
     x = int(input("Enter translation_x: "))
     y = int(input("Enter translation_y: "))

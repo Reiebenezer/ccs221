@@ -110,7 +110,7 @@ def main():
         functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, 'vertical', width, height), Shear(img_, skew_dir, skew, width, height)]
 
         for f in functions:
-            img_ = cv2.imread(f"{image}")
+            img_ = cv2.imdecode(file_bytes, 1)
             img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
             img_ = f

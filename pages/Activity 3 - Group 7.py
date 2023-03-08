@@ -88,10 +88,7 @@ def main():
     
 
     uploaded_file = st.file_uploader("Choose a file")
-    if uploaded_file is not None:
-        # To read file as string:
-        image = stringio.read()
-        st.write(image)
+    image = uploaded_file.name
     
     x = int(st.number_input("Enter translation_x: "))
     y = int(st.number_input("Enter translation_y: "))

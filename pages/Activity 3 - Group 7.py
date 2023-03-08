@@ -101,7 +101,8 @@ def main():
         skew = float(st.number_input("Enter skew amount (-1 to 1): "))
         skew_dir = str(st.text_input("Enter skew direction: "))
         
-        if skew_dir is not None:
+        
+        if st.button("Pass Parameters"):
             img_ = cv2.imdecode(file_bytes, 1)
             img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 

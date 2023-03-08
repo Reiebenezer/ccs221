@@ -79,7 +79,9 @@ def Shear(img, direction, amount, width, height):
             [amount, 1, 0],
             [0, 0, 1]
         ])
-
+    else:
+        raise Exception("Invalid skew direction")
+        return 0
     # return the modified image
     return cv2.warpPerspective(img, m_shearing, (int(width*1.5), int(height*1.5)))
     
@@ -97,7 +99,7 @@ def main():
         xScale = float(st.number_input("Enter x-axis scale (0 to 1): "))
         yScale = float(st.number_input("Enter y-axis scale (0 to 1): "))
         skew = float(st.number_input("Enter skew amount (-1 to 1): "))
-        skew_dir = str(st.number_input("Enter skew direction: "))
+        skew_dir = str(st.text_input("Enter skew direction: "))
 
         img_ = cv2.imread(image)
         img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)

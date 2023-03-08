@@ -89,9 +89,9 @@ def Shear(img, direction, amount, width, height):
 def main():
     
     
-    uploaded_file = st.file_uploader("Choose a file", type=['png', 'jpg', 'jpeg'])
+    uploaded_file = st.file_uploader("Choose an image", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
-        image = uploaded_file.name
+        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         print (image)
         
         x = int(st.number_input("Enter translation_x: "))
@@ -102,7 +102,7 @@ def main():
         skew = float(st.number_input("Enter skew amount (-1 to 1): "))
         skew_dir = str(st.text_input("Enter skew direction: "))
 
-        img_ = cv2.imread(image)
+        img_ = cv2.imdecode(file_bytes, 1)
         img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
         width = img_.shape[0]

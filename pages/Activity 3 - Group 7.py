@@ -86,34 +86,35 @@ def Shear(img, direction, amount, width, height):
 
 def main():
     
-
-    uploaded_file = st.file_uploader("Choose a file")
-    image = uploaded_file.name
     
-    x = int(st.number_input("Enter translation_x: "))
-    y = int(st.number_input("Enter translation_y: "))
-    rot = int(st.number_input("Enter rotation in degrees: "))
-    xScale = float(st.number_input("Enter x-axis scale (0 to 1): "))
-    yScale = float(st.number_input("Enter y-axis scale (0 to 1): "))
-    skew = float(st.number_input("Enter skew amount (-1 to 1): "))
-    skew_dir = str(st.number_input("Enter skew direction: "))
+    uploaded_file = st.file_uploader("Choose a file", type=['png', 'jpg', 'jpeg'])
+    if uploaded_file is not None:
+        image = uploaded_file.name
+    
+        x = int(st.number_input("Enter translation_x: "))
+        y = int(st.number_input("Enter translation_y: "))
+        rot = int(st.number_input("Enter rotation in degrees: "))
+        xScale = float(st.number_input("Enter x-axis scale (0 to 1): "))
+        yScale = float(st.number_input("Enter y-axis scale (0 to 1): "))
+        skew = float(st.number_input("Enter skew amount (-1 to 1): "))
+        skew_dir = str(st.number_input("Enter skew direction: "))
 
-    img_ = cv2.imread(f"{image}")
-    img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
-
-    width = img_.shape[0]
-    height = img_.shape[1]
-
-    functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, 'vertical', width, height), Shear(img_, skew_dir, skew, width, height)]
-
-    for f in functions:
-        img_ = cv2.imread(f"{image}")
+        img_ = cv2.imread(image)
         img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
-        img_ = f
-        plt.axis('off')
-        plt.imshow(img_)
-        plt.show()
+        width = img_.shape[0]
+        height = img_.shape[1]
+
+        functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, 'vertical', width, height), Shear(img_, skew_dir, skew, width, height)]
+
+        for f in functions:
+            img_ = cv2.imread(f"{image}")
+            img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
+
+            img_ = f
+            plt.axis('off')
+            plt.imshow(img_)
+            plt.show()
 
 if __name__ == '__main__':
     main()

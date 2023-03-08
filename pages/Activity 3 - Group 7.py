@@ -100,7 +100,9 @@ def main():
         yScale = float(st.number_input("Enter y-axis scale (0 to 1): "))
         skew = float(st.number_input("Enter skew amount (-1 to 1): "))
         skew_dir = str(st.text_input("Enter skew direction: "))
-
+        
+        while skew_dir is None:
+            pass
         img_ = cv2.imdecode(file_bytes, 1)
         img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
@@ -108,7 +110,7 @@ def main():
         height = img_.shape[1]
 
         functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, 'vertical', width, height), Shear(img_, skew_dir, skew, width, height)]
-
+        
         for f in functions:
             img_ = cv2.imdecode(file_bytes, 1)
             img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)

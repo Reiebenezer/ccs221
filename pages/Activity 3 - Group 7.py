@@ -89,7 +89,8 @@ def main():
 
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
-        image = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        # To read file as string:
+        image = stringio.read()
         st.write(image)
     
     x = int(input("Enter translation_x: "))
@@ -100,7 +101,7 @@ def main():
     skew = float(input("Enter skew amount (-1 to 1): "))
     skew_dir = str(input("Enter skew direction: "))
 
-    img_ = cv2.imread(image)
+    img_ = cv2.imread(f"{image}")
     img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
     width = img_.shape[0]

@@ -92,7 +92,6 @@ def main():
     uploaded_file = st.file_uploader("Choose an image", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-        print (image)
         
         x = int(st.number_input("Enter translation_x: "))
         y = int(st.number_input("Enter translation_y: "))

@@ -4,6 +4,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 from scipy.spatial import Delaunay
 import tensorflow as tf
+import streamlit as st
 
 tf.compat.v1.disable_eager_execution()
 
@@ -23,7 +24,7 @@ def _plt_basic_object_(points):
     ax.set_ylim3d(0, 10)
     ax.set_zlim3d(0, 10)
 
-    plt.show()
+    st.pyplot(fig)
 
 def _cube_(bottom_lower=(0, 0, 0), side_length=5):
     bottom_lower = np.array(bottom_lower)

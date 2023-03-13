@@ -20,7 +20,7 @@ def randomizeplot(two_d_arr:np.array):
     # plt.colorbar()
     # plt.show()
 
-    st.pyplot(two_d_arr, interpolation='none', cmap='plasma')
+    st.pyplot(two_d_arr)
 
 
 

@@ -37,11 +37,11 @@ def BresenhamLine(x1, y1, x2, y2, color, axis):
 
     slope = dy / float(dx)
     
-    if slope > 1:
-        #interchange values of x and y
-        dx, dy, = dy, dx
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
+#     if slope > 1:
+#         #interchange values of x and y
+#         dx, dy, = dy, dx
+#         x1, y1 = y1, x1
+#         x2, y2 = y2, x2
 
     p = 2*dy - dx
 

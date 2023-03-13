@@ -104,7 +104,7 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
     DDALine(X1, Y1, X2, Y2, color, axis[0])
 		
     #add midpoint
-    axis[0].plot(X1 + dx/2, Y1 + dy/2, "r.")
+    axis[0].plot((X1 + X2)/2, (Y1 + Y2)/2, "r.")
     print(f"\nMidpoint: x: {X1 + dx/2}, y: {Y1 + dy/2}")
 
     axis[0].set_title("DDA Line Algorithm With Midpoint", fontsize=10)
@@ -113,7 +113,7 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
     BresenhamLine(X1, Y1, X2, Y2, color, axis[1])
 		
     #add midpoint
-    axis[1].plot((x1+1)/2, (y1+1)/2, "r.")
+    axis[1].plot((X1 + X2)/2, (Y1 + Y2)/2, "r.")
     print(f"\nMidpoint: x: {(x1 + dx/2)+1}, y: {(y1 + dy/2)+1}")
      
     axis[1].set_title("Bresenham's Line Algorithm With Midpoint", fontsize=10)

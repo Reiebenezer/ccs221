@@ -37,23 +37,31 @@ def BresenhamLine(x1, y1, x2, y2, color, axis):
 
     slope = dy / float(dx)
     
-    if slope > 1:
-        #interchange values of x and y
-        dx, dy, = dy, dx
-#         x1, y1 = y1, x1
-#         x2, y2 = y2, x2
+     if slope > 1:
+	p = 2*dx - dy
 
-    p = 2*dy - dx
+	for i in range(0, int(dy + 1)):
+	axis.plot(int(x1), int(y1), color)
+	if p > 0:
+	    x1 = x1 + 1 if x1 < x2 else x1 - 1
+	    p += 2 * (dx - dy)
+	else:
+	    p += 2 * dx
 
-    for i in range(0, int(dx + 1)):
-        axis.plot(int(x1), int(y1), color)
-        if p > 0:
-            y1 = y1 + 1 if y1 < y2 else y1 - 1
-            p += 2 * (dy - dx)
-        else:
-            p += 2 * dy
-        
-        x1 = x1 + 1 if x1 < x2 else x1 - 1
+	y1 = y1 + 1 if y1 < y2 else y1 - 1
+	
+    else:
+	p = 2*dy - dx
+
+	for i in range(0, int(dx + 1)):
+	axis.plot(int(x1), int(y1), color)
+	if p > 0:
+	    y1 = y1 + 1 if y1 < y2 else y1 - 1
+	    p += 2 * (dy - dx)
+	else:
+	    p += 2 * dy
+
+	x1 = x1 + 1 if x1 < x2 else x1 - 1
     axis.set_title("Bresenham's Line Algorithm", fontsize=10)
 
 

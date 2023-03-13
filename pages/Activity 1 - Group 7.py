@@ -37,11 +37,11 @@ def BresenhamLine(x1, y1, x2, y2, color, axis):
 
     slope = dy / float(dx)
     
-     if slope > 1:
+    if slope > 1:
 	p = 2*dx - dy
 
 	for i in range(0, int(dy + 1)):
-	axis.plot(int(x1), int(y1), color)
+	    axis.plot(int(x1), int(y1), color)
 	if p > 0:
 	    x1 = x1 + 1 if x1 < x2 else x1 - 1
 	    p += 2 * (dx - dy)

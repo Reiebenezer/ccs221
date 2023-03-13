@@ -19,7 +19,7 @@ def randomizeplot(two_d_arr:np.array):
     # plt.imshow(two_d_arr, interpolation='none', cmap='plasma')
     # plt.colorbar()
     # plt.show()
-    st.image(two_d_arr)
+    st.image(two_d_arr, caption = "Random Pixels")
 
 
 

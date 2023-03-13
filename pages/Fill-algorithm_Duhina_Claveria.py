@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 import cv2
+from PIL import Image
 
 def plot(two_d_arr:np.array, row, column, color):
 
@@ -20,7 +21,8 @@ def randomizeplot(two_d_arr:np.array):
     # plt.imshow(two_d_arr, interpolation='none', cmap='plasma')
     # plt.colorbar()
     # plt.show()
-    st.image(two_d_arr, clamp=True, caption = "Random Pixels")
+    img = Image.fromarray(two_d_arr, "RGB")
+    st.image(img, caption = "Random Pixels")
 
 
 if __name__ == '__main__':

@@ -126,7 +126,7 @@ def main():
     yEnd = int(st.number_input("Enter Y2: "))
     color = "b."
 
-    if x != 0 and y != 0 and xEnd != 0 and yEnd != 0:
+    if xEnd != 0 and yEnd != 0 and x != xEnd and y != yEnd:
         figure, axis = plt.subplots(1, 2)
 
         MidpointLine2(x, y, xEnd, yEnd, color, axis)

@@ -18,7 +18,7 @@ def DDALine(x1, y1, x2, y2, color, axis):
     Yinc = float(dy/steps)
 
     for i in range(0, int(steps + 1)):
-        axis[0, 0].plot(int(x1), int(y1), color)
+        axis.plot(int(x1), int(y1), color)
         x1 += Xinc
         y1 += Yinc
     axis.set_title("DDA Line Algorithm", fontsize=10)
@@ -46,7 +46,7 @@ def BresenhamLine(x1, y1, x2, y2, color, axis):
     p = 2*dy - dx
 
     for i in range(0, int(dx + 1)):
-        axis[0, 1].plot(int(x1), int(y1), color)
+        axis.plot(int(x1), int(y1), color)
         if p > 0:
             y1 = y1 + 1 if y1 < y2 else y1 - 1
             p += 2 * (dy - dx)
@@ -79,7 +79,7 @@ def MidpointLine(x1, y1, x2, y2, color, axis):
     steps = dx if dx > dy else dy
     
     for i in range(0, int(steps + 1)):
-        axis[1, 0].plot(int(x1), int(y1), color)
+        axis.plot(int(x1), int(y1), color)
         x1 += 1
 
         if d < 0:

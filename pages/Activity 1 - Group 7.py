@@ -152,7 +152,7 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
         x1 = x1 + 1 if x1 < x2 else x1 - 1
     
     #add midpoint
-    axis[1].plot((dx+1)/2, (dy+1)/2, "r.")
+    axis[1].plot((x1+1)/2, (y1+1)/2, "r.")
     print(f"\nMidpoint: x: {(x1 + dx/2)+1}, y: {(y1 + dy/2)+1}")
      
     axis[1].set_title("Bresenham's Line Algorithm With Midpoint", fontsize=10)

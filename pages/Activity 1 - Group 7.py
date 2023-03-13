@@ -21,7 +21,7 @@ def DDALine(x1, y1, x2, y2, color, axis):
         axis[0, 0].plot(int(x1), int(y1), color)
         x1 += Xinc
         y1 += Yinc
-    axis[0, 0].set_title("DDA Line Algorithm", fontsize=10)
+    axis.set_title("DDA Line Algorithm", fontsize=10)
 
 def BresenhamLine(x1, y1, x2, y2, color, axis):
     """
@@ -54,7 +54,7 @@ def BresenhamLine(x1, y1, x2, y2, color, axis):
             p += 2 * dy
         
         x1 = x1 + 1 if x1 < x2 else x1 - 1
-    axis[0, 1].set_title("Bresenham's Line Algorithm", fontsize=10)
+    axis.set_title("Bresenham's Line Algorithm", fontsize=10)
 
 
 def MidpointLine(x1, y1, x2, y2, color, axis):
@@ -87,7 +87,7 @@ def MidpointLine(x1, y1, x2, y2, color, axis):
         else:
             d += dy - dx
             y1 += 1
-    axis[1, 0].set_title("Midpoint Line Algorithm", fontsize=10)
+    axis.set_title("Midpoint Line Algorithm", fontsize=10)
 
 def MidpointLine2(x1, y1, x2, y2, color, axis):
     """
@@ -101,21 +101,8 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
     Y2 = y2
 
     #DDA Portion
-    dx = X2 - X1
-    dy = Y2 - Y1
-
-    steps = abs(dx) if abs(dx) > abs(dy) else abs(dy)
-
-    Xinc = float(dx/steps)
-    Yinc = float(dy/steps)
-
-    print("\nDDA Line Algorithm:\n")
-    for i in range(0, int(steps + 1)):
-        axis[0].plot(int(x1), int(y1), color)
-        print(f"x: {float(x1)}, y: {float(y1)}")
-        x1 += Xinc
-        y1 += Yinc
-    
+    DDALine(X1, X2, Y1, Y2, color, axis[0])
+		
     #add midpoint
     axis[0].plot(X1 + dx/2, Y1 + dy/2, "r.")
     print(f"\nMidpoint: x: {X1 + dx/2}, y: {Y1 + dy/2}")
@@ -123,34 +110,8 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
     axis[0].set_title("DDA Line Algorithm With Midpoint", fontsize=10)
 
     #Bresenham Portion
-    dx = abs(X2 - X1)
-    dy = abs(Y2 - Y1)
-
-    x1 = X1
-    y1 = Y1
-
-    slope = dy / float(dx)
-    
-    if slope > 1:
-        #interchange values of x and y
-        dx, dy, = dy, dx
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
-
-    p = 2*dy - dx
-
-    print("\nBresenham Line Algorithm:\n")
-    for i in range(0, int(dx + 1)):
-        axis[1].plot(int(x1), int(y1), color)
-        print(f"x: {x1}, y: {y1}")
-        if p > 0:
-            y1 = y1 + 1 if y1 < y2 else y1 - 1
-            p += 2 * (dy - dx)
-        else:
-            p += 2 * dy
-        
-        x1 = x1 + 1 if x1 < x2 else x1 - 1
-    
+    BresenhamLine(X1, X2, Y1, Y2, color, axis[1])
+		
     #add midpoint
     axis[1].plot((x1+1)/2, (y1+1)/2, "r.")
     print(f"\nMidpoint: x: {(x1 + dx/2)+1}, y: {(y1 + dy/2)+1}")

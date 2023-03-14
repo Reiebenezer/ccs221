@@ -171,8 +171,6 @@ def main():
         MidpointLine2(x, y, xEnd, yEnd, color, axis)
         st.pyplot(figure)
         
-        st.pyplot(figure)
-
 
 
 if __name__ == '__main__':

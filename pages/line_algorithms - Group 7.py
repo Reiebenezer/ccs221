@@ -172,7 +172,7 @@ def main():
     # MidpointLine(x, y, xEnd, yEnd, color, axis)
     MidpointLine2(x, y, xEnd, yEnd, color, axis)
     
-    st.set_option('deprecation.showPyplotGlobalUse', False)
+    # st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot(figure)
 
 

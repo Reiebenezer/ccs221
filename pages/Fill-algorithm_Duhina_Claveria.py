@@ -9,7 +9,7 @@ def plot(two_d_arr:np.array, row, column, color):
     two_d_arr[row, column] = color
 
     img = plt.imshow(two_d_arr, interpolation='none', cmap='plasma')
-    img.set_clim([0, 50])
+    img.set_clim([0, 5])
     plt.colorbar()
     return img
 
@@ -19,7 +19,7 @@ def randomizeplot(two_d_arr:np.array):
             two_d_arr[i, j] = int(np.random.randint(0, 6))
 
     img = plt.imshow(two_d_arr, interpolation='none', cmap='plasma')
-    img.set_clim([0, 50])
+    img.set_clim([0, 5])
     plt.colorbar()
     return img
 

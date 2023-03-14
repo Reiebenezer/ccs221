@@ -106,17 +106,52 @@ def _hexagonal_prism_(bottom_lower=(0, 0, 0), side_length=5):
 def translate_obj(points, amount):
     return tf.add(points, amount)
 
-_init_shape_ = _hexagonal_prism_(side_length=4)
-_plt_basic_object_(_init_shape_)
-# init_cube_ = _cube_(side_length=4)
-# points = tf.constant(init_cube_, dtype=tf.float32)
+option = st.selectbox("Select a 3D shape", "cube", "pyramid", "diamond", "hexagonal prism")
 
-# _plt_basic_object_(init_cube_)
+if option == "cube":
+    _init_shape_ = _cube_(side_length=4)
 
-# translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
-# translated_object = translate_obj(points, translation_amount)
+    points = tf.constant(_init_shape_, dtype=tf.float32)
+    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+    translated_object = translate_obj(points, translation_amount)
 
-# with tf.compat.v1.Session() as session:
-#     translated_cube = session.run(translated_object)
+    with tf.compat.v1.Session() as session:
+        translated_cube = session.run(translated_object)
 
-# _plt_basic_object_(translated_cube)
+    _plt_basic_object_(translated_cube)
+
+elif option == "pyramid":
+    _init_shape_ = _pyramid_(side_length=4)
+    
+    points = tf.constant(_init_shape_, dtype=tf.float32)
+    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+    translated_object = translate_obj(points, translation_amount)
+    
+    with tf.compat.v1.Session() as session:
+        translated_cube = session.run(translated_object)
+
+    _plt_basic_object_(translated_cube)
+
+elif option == "diamond":
+    _init_shape_ = _diamond_(side_length=4)
+    
+    points = tf.constant(_init_shape_, dtype=tf.float32)
+    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+    translated_object = translate_obj(points, translation_amount)
+
+    with tf.compat.v1.Session() as session:
+        translated_cube = session.run(translated_object)
+
+    _plt_basic_object_(translated_cube)
+
+elif option == "hexagonal prism":
+    _init_shape_ = _hexagonal_prism_(side_length=4)
+    
+    points = tf.constant(_init_shape_, dtype=tf.float32)
+    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+    translated_object = translate_obj(points, translation_amount)
+
+    with tf.compat.v1.Session() as session:
+        translated_cube = session.run(translated_object)
+
+    _plt_basic_object_(translated_cube)

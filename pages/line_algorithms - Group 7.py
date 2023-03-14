@@ -159,23 +159,34 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
 
 
 def main():
-    x = int(input("Enter X1: "))
-    y = int(input("Enter Y1: "))
-    xEnd = int(input("Enter X2: "))
-    yEnd = int(input("Enter Y2: "))
+    x = int(st.number_input("Enter X1: "))
+    y = int(st.number_input("Enter Y1: "))
+    xEnd = int(st.number_input("Enter X2: "))
+    yEnd = int(st.number_input("Enter Y2: "))
     color = "b."
 
-    figure, axis = plt.subplots(1, 2)
-    
-    # DDALine(x, y, xEnd, yEnd, color, axis)
-    # BresenhamLine(x, y, xEnd, yEnd, color, axis)
-    # MidpointLine(x, y, xEnd, yEnd, color, axis)
-    MidpointLine2(x, y, xEnd, yEnd, color, axis)
-    
-    # st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.pyplot(figure)
+    if st.button("Commit Changes"):
+        figure, axis = plt.subplots(1, 2)
+        
+        option = ("Choose Plot Method", ("DDA Line", "Bresenham Line", "Midpoint Line", "Show Midpoint in Line"))
+        
+        if option == "DDA Line":
+            DDALine(x, y, xEnd, yEnd, color, axis)
+            st.pyplot(figure)
+        elif option == "Bresenham Line":
+            BresenhamLine(x, y, xEnd, yEnd, color, axis)
+            st.pyplot(figure)
 
+        elif option == "Midpoint Line":
+            MidpointLine(x, y, xEnd, yEnd, color, axis)
+            st.pyplot(figure)
 
+        else:
+            MidpointLine2(x, y, xEnd, yEnd, color, axis)
+            st.pyplot(figure)
+        
+        # st.set_option('deprecation.showPyplotGlobalUse', False)
+        st.pyplot(figure)
 
 
 

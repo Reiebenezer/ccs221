@@ -22,27 +22,31 @@ def main():
     BXnew = BXold + Tx
     BYnew = BYold + Ty
     
-    fig, axs = plt.subplots(2, 5)
+    # fig, axs = plt.subplots(2, 5)
     plt.rcParams.update({'font.size': 7})
-    images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.png"]
+    image = st.sidebar.file_uploader("Choose an image", type=['png', 'jpg', 'jpeg'])
 
-    for index, img in enumerate(images): 
-        img = cv2.imread(img)
+    if image is not None:
+        image_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
+
+        img = cv2.imdecode(image_bytes, 1)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         
         img1 = Translation(img, BXold, BYold)
         img2 = Translation(img, BXnew, BYnew)
 
-        axs[0, index].imshow(img1)
-        axs[0, index].axis('off')
-        axs[0, index].set_title("Original Image")
+        # axs[0].imshow(img1)
+        # axs[0].axis('off')
+        # axs[0].set_title("Original Image")
         
-        axs[1, index].imshow(img2)
-        axs[1, index].axis('off')
-        axs[1, index].set_title("Translated Image")
-    
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.pyplot(fig)
+        # axs[1].imshow(img2)
+        # axs[1].axis('off')
+        # axs[1].set_title("Translated Image")
+        
+        # st.set_option('deprecation.showPyplotGlobalUse', False)
+        # st.pyplot(fig)
+
+        st.image([img1, img2])
 
 if __name__ == '__main__':
     main()

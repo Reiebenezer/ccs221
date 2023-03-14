@@ -128,7 +128,7 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
 
 def main():
     x = int(st.sidebar.number_input("Enter X1: "))
-    y = int(st.sidebar.number_input()("Enter Y1: "))
+    y = int(st.sidebar.number_input("Enter Y1: "))
     xEnd = int(st.sidebar.number_input("Enter X2: "))
     yEnd = int(st.sidebar.number_input("Enter Y2: "))
     color = "b."

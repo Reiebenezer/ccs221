@@ -103,8 +103,8 @@ def main():
         skew_dir = st.sidebar.radio("Skew Direction", ("Vertical", "Horizontal"))
         
 
-        # img_ = cv2.imdecode(file_bytes, 1)
-        # img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
+        img_ = cv2.imdecode(file_bytes, 1)
+        img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
         width = img_.shape[0]
         height = img_.shape[1]

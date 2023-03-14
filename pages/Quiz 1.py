@@ -23,7 +23,7 @@ def main():
     BYnew = BYold + Ty
     
     # fig, axs = plt.subplots(2, 5)
-    plt.rcParams.update({'font.size': 7})
+    # plt.rcParams.update({'font.size': 7})
     image = st.sidebar.file_uploader("Choose an image", type=['png', 'jpg', 'jpeg'])
 
     if image is not None:

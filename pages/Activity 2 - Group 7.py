@@ -40,9 +40,9 @@ if __name__ == '__main__':
         st.pyplot()
         
     elif option == "Customize default pixel color scheme":
-        row = int(st.number_input("Enter Row (from 1 to 3)\n>>> "))
-        column = int(st.number_input("Enter  Column (from 1 to 3)\n>>> "))
-        color = int(st.number_input("Enter Color Value (from 0 to 5)\nNOTE: must be integer!\n>>> "))
+        row = int(st.slider("Row", 1, 3, 2))
+        column = int(st.slider("Column", 1, 3, 2))
+        color = int(st.slider("Value", 0, 5, 3))
         
         img = plot(two_d_arr, row-1, column-1, color)
         st.set_option('deprecation.showPyplotGlobalUse', False)

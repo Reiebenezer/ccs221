@@ -88,17 +88,17 @@ def Shear(img, direction, amount, width, height):
 def main():
     
     
-    uploaded_file = st.file_uploader("Choose an image", type=['png', 'jpg', 'jpeg'])
+    uploaded_file = st.sidebar.file_uploader("Choose an image", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         
-        x = int(st.number_input("Enter translation_x: "))
-        y = int(st.number_input("Enter translation_y: "))
-        rot = int(st.number_input("Enter rotation in degrees: "))
-        xScale = float(st.number_input("Enter x-axis scale (0 to 1): "))
-        yScale = float(st.number_input("Enter y-axis scale (0 to 1): "))
-        skew = float(st.number_input("Enter skew amount (-1 to 1): "))
-        skew_dir = str(st.text_input("Enter skew direction: "))
+        x = int(st.sidebar.number_input("Enter translation_x: "))
+        y = int(st.sidebar.number_input("Enter translation_y: "))
+        rot = int(st.sidebar.number_input("Enter rotation in degrees: "))
+        xScale = float(st.sidebar.number_input("Enter x-axis scale (0 to 1): "))
+        yScale = float(st.sidebar.number_input("Enter y-axis scale (0 to 1): "))
+        skew = float(st.sidebar.number_input("Enter skew amount (-1 to 1): "))
+        skew_dir = str(st.sidebar.text_input("Enter skew direction: "))
         
         
         if st.button("Pass Parameters"):

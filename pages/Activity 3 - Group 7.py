@@ -66,13 +66,13 @@ def Reflection(img, flip_direction, width, height):
 def Shear(img, direction, amount, width, height):
 
     #determine shear direction and create matrix for each possibility
-    if direction == 'horizontal':
+    if direction == 'Horizontal':
         m_shearing = np.float32([
             [1, amount, 0],
             [0, 1, 0],
             [0, 0, 1]
         ])
-    elif direction == 'vertical':
+    elif direction == 'Vertical':
         m_shearing = np.float32([
             [1, 0, 0],
             [amount, 1, 0],
@@ -92,16 +92,16 @@ def main():
     if uploaded_file is not None:
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         
-        x = int(st.sidebar.number_input("Enter translation_x: "))
-        y = int(st.sidebar.number_input("Enter translation_y: "))
-        rot = int(st.sidebar.number_input("Enter rotation in degrees: "))
-        xScale = float(st.sidebar.number_input("Enter x-axis scale (0 to 1): "))
-        yScale = float(st.sidebar.number_input("Enter y-axis scale (0 to 1): "))
-        skew = float(st.sidebar.number_input("Enter skew amount (-1 to 1): "))
-        skew_dir = str(st.sidebar.text_input("Enter skew direction: "))
+        x = int(st.sidebar.slider("Translation_x", 0, 2000, 500))
+        y = int(st.sidebar.slider("Translation_y", 0, 2000, 500))
+        rot = int(st.sidebar.slider("Rotation", 0, 90, 45))
+        xScale = float(st.sidebar.slider("X-axis scale", 0.0, 1.0, 1.0))
+        yScale = float(st.sidebar.slider("Y-axis scale", 0.0, 1.0, 1.0))
+        skew = float(st.sidebar.slider("Skew Amount", -1.0, 1.0, 0.0))
+        skew_dir = st.sidebar.radio("Skew Direction", ("Vertical", "Horizontal"))
         
         
-        if st.button("Pass Parameters"):
+        if st.sidebar.button("Pass Parameters"):
             img_ = cv2.imdecode(file_bytes, 1)
             img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 

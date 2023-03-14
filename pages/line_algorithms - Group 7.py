@@ -165,27 +165,12 @@ def main():
     yEnd = int(st.number_input("Enter Y2: "))
     color = "b."
 
-    if st.button("Commit Changes"):
+    if x != 0 and y != 0 and xEnd != 0 and yEnd != 0:
         figure, axis = plt.subplots(1, 2)
-        
-        option = ("Choose Plot Method", ("DDA Line", "Bresenham Line", "Midpoint Line", "Show Midpoint in Line"))
-        
-        if option == "DDA Line":
-            DDALine(x, y, xEnd, yEnd, color, axis)
-            st.pyplot(figure)
-        elif option == "Bresenham Line":
-            BresenhamLine(x, y, xEnd, yEnd, color, axis)
-            st.pyplot(figure)
 
-        elif option == "Midpoint Line":
-            MidpointLine(x, y, xEnd, yEnd, color, axis)
-            st.pyplot(figure)
-
-        else:
-            MidpointLine2(x, y, xEnd, yEnd, color, axis)
-            st.pyplot(figure)
+        MidpointLine2(x, y, xEnd, yEnd, color, axis)
+        st.pyplot(figure)
         
-        # st.set_option('deprecation.showPyplotGlobalUse', False)
         st.pyplot(figure)
 
 

@@ -32,12 +32,14 @@ if __name__ == '__main__':
         for j in range(3):
             two_d_arr[i, j] = 5 if two_d_arr[i, j] == 1 else 0
     
-    if st.button("Click to randomize all pixel colors"):
+    option = st.selectbox("Choose an option", ("Randomize pixel colors", "Customize default pixel color scheme"))
+    
+    if option == "Randomize pixel colors":
         img = randomizeplot(two_d_arr)
         st.set_option('deprecation.showPyplotGlobalUse', False)
         st.pyplot()
         
-    else:
+    elif option == "Customize default pixel color scheme":
         row = int(st.number_input("Enter Row (from 1 to 3)\n>>> "))
         column = int(st.number_input("Enter  Column (from 1 to 3)\n>>> "))
         color = float(st.number_input("Enter Color Value (from 0 to 5)\nNOTE: must be integer!\n>>> "))

@@ -106,52 +106,56 @@ def _hexagonal_prism_(bottom_lower=(0, 0, 0), side_length=5):
 def translate_obj(points, amount):
     return tf.add(points, amount)
 
-option = st.selectbox("Select a 3D shape", "cube", "pyramid", "diamond", "hexagonal prism")
+def main():
+    option = st.selectbox("Select a 3D shape", "cube", "pyramid", "diamond", "hexagonal prism")
 
-if option == "cube":
-    _init_shape_ = _cube_(side_length=4)
+    if option == "cube":
+        _init_shape_ = _cube_(side_length=4)
 
-    points = tf.constant(_init_shape_, dtype=tf.float32)
-    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
-    translated_object = translate_obj(points, translation_amount)
+        points = tf.constant(_init_shape_, dtype=tf.float32)
+        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translated_object = translate_obj(points, translation_amount)
 
-    with tf.compat.v1.Session() as session:
-        translated_cube = session.run(translated_object)
+        with tf.compat.v1.Session() as session:
+            translated_cube = session.run(translated_object)
 
-    _plt_basic_object_(translated_cube)
+        _plt_basic_object_(translated_cube)
 
-elif option == "pyramid":
-    _init_shape_ = _pyramid_(side_length=4)
-    
-    points = tf.constant(_init_shape_, dtype=tf.float32)
-    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
-    translated_object = translate_obj(points, translation_amount)
-    
-    with tf.compat.v1.Session() as session:
-        translated_cube = session.run(translated_object)
+    elif option == "pyramid":
+        _init_shape_ = _pyramid_(side_length=4)
+        
+        points = tf.constant(_init_shape_, dtype=tf.float32)
+        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translated_object = translate_obj(points, translation_amount)
+        
+        with tf.compat.v1.Session() as session:
+            translated_cube = session.run(translated_object)
 
-    _plt_basic_object_(translated_cube)
+        _plt_basic_object_(translated_cube)
 
-elif option == "diamond":
-    _init_shape_ = _diamond_(side_length=4)
-    
-    points = tf.constant(_init_shape_, dtype=tf.float32)
-    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
-    translated_object = translate_obj(points, translation_amount)
+    elif option == "diamond":
+        _init_shape_ = _diamond_(side_length=4)
+        
+        points = tf.constant(_init_shape_, dtype=tf.float32)
+        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translated_object = translate_obj(points, translation_amount)
 
-    with tf.compat.v1.Session() as session:
-        translated_cube = session.run(translated_object)
+        with tf.compat.v1.Session() as session:
+            translated_cube = session.run(translated_object)
 
-    _plt_basic_object_(translated_cube)
+        _plt_basic_object_(translated_cube)
 
-elif option == "hexagonal prism":
-    _init_shape_ = _hexagonal_prism_(side_length=4)
-    
-    points = tf.constant(_init_shape_, dtype=tf.float32)
-    translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
-    translated_object = translate_obj(points, translation_amount)
+    elif option == "hexagonal prism":
+        _init_shape_ = _hexagonal_prism_(side_length=4)
+        
+        points = tf.constant(_init_shape_, dtype=tf.float32)
+        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translated_object = translate_obj(points, translation_amount)
 
-    with tf.compat.v1.Session() as session:
-        translated_cube = session.run(translated_object)
+        with tf.compat.v1.Session() as session:
+            translated_cube = session.run(translated_object)
 
-    _plt_basic_object_(translated_cube)
+        _plt_basic_object_(translated_cube)
+
+if __name__ == '__main__':
+    main()

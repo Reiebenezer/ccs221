@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
-
+import streamlit as st
 
 #translation
 def Translation(img, x, y):
@@ -40,8 +40,9 @@ def main():
         axs[1, index].imshow(img2)
         axs[1, index].axis('off')
         axs[1, index].set_title("Translated Image")
-        
-    plt.show()
+    
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot(fig)
 
 if __name__ == '__main__':
     main()

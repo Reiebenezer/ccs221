@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import streamlit as st
 
 def DDALine(x1, y1, x2, y2, color, axis):
     """
@@ -170,7 +171,9 @@ def main():
     # BresenhamLine(x, y, xEnd, yEnd, color, axis)
     # MidpointLine(x, y, xEnd, yEnd, color, axis)
     MidpointLine2(x, y, xEnd, yEnd, color, axis)
-    plt.show()
+    
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot(figure)
 
 
 

@@ -113,7 +113,7 @@ def main():
         _init_shape_ = _cube_(side_length=4)
 
         points = tf.constant(_init_shape_, dtype=tf.float32)
-        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translation_amount = tf.constant([int(st.number_input("Enter x-translation")), int(st.number_input("Enter y-translation")), int(st.number_input("Enter z-translation"))], dtype=tf.float32)
         translated_object = translate_obj(points, translation_amount)
 
         with tf.compat.v1.Session() as session:
@@ -125,7 +125,7 @@ def main():
         _init_shape_ = _pyramid_(side_length=4)
         
         points = tf.constant(_init_shape_, dtype=tf.float32)
-        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translation_amount = tf.constant([int(st.number_input("Enter x-translation")), int(st.number_input("Enter y-translation")), int(st.number_input("Enter z-translation"))], dtype=tf.float32)
         translated_object = translate_obj(points, translation_amount)
         
         with tf.compat.v1.Session() as session:
@@ -137,7 +137,7 @@ def main():
         _init_shape_ = _diamond_(side_length=4)
         
         points = tf.constant(_init_shape_, dtype=tf.float32)
-        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translation_amount = tf.constant([int(st.number_input("Enter x-translation")), int(st.number_input("Enter y-translation")), int(st.number_input("Enter z-translation"))], dtype=tf.float32)
         translated_object = translate_obj(points, translation_amount)
 
         with tf.compat.v1.Session() as session:
@@ -149,7 +149,7 @@ def main():
         _init_shape_ = _hexagonal_prism_(side_length=4)
         
         points = tf.constant(_init_shape_, dtype=tf.float32)
-        translation_amount = tf.constant([0, 0, 0], dtype=tf.float32)
+        translation_amount = tf.constant([int(st.number_input("Enter x-translation")), int(st.number_input("Enter y-translation")), int(st.number_input("Enter z-translation"))], dtype=tf.float32)
         translated_object = translate_obj(points, translation_amount)
 
         with tf.compat.v1.Session() as session:

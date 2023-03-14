@@ -41,7 +41,9 @@ if __name__ == '__main__':
         row = int(st.number_input("Enter Row (from 1 to 3)\n>>> "))
         column = int(st.number_input("Enter  Column (from 1 to 3)\n>>> "))
         color = float(st.number_input("Enter Color Value (from 0 to 5)\nNOTE: must be integer!\n>>> "))
-        img = plot(two_d_arr, row-1, column-1, color)
-        st.set_option('deprecation.showPyplotGlobalUse', False)
-        st.pyplot()
+
+        if st.button("Commit Changes"):
+            img = plot(two_d_arr, row-1, column-1, color)
+            st.set_option('deprecation.showPyplotGlobalUse', False)
+            st.pyplot()
         

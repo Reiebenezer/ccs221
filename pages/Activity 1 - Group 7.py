@@ -113,7 +113,7 @@ def MidpointLine2(x1, y1, x2, y2, color, axis):
     DDALine(x1, y1, x2, y2, color, axis[0])
 		
     #add midpoint
-    st.write((X1 + X2)/2)
+    #st.write((X1 + X2)/2)
     axis[0].plot((X1 + X2)/2, (Y1 + Y2)/2, "r.")
     axis[0].set_title("DDA Line Algorithm With Midpoint", fontsize=10)
 

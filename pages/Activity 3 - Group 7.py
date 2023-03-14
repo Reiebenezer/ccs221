@@ -46,18 +46,20 @@ def Scaling(img, xScale, yScale, width, height):
 def Reflection(img, flip_direction, width, height):
 
     #determine flip_direction and create matrix for each possibility
-    if flip_direction == 'vertical':
+    if flip_direction == 'Vertical':
         m_reflection = np.float32([
             [1, 0, 0],
             [0, -1, height],
             [0, 0, 1]
         ])
-    elif flip_direction == 'horizontal':
+    elif flip_direction == 'Horizontal':
         m_reflection = np.float32([
             [-1, 0, width],
             [0, 1, 0],
             [0, 0, 1]
         ])
+    else: 
+        return img
 
     # return the modified image
     return cv2.warpPerspective(img, m_reflection, (width, height))
@@ -80,7 +82,6 @@ def Shear(img, direction, amount, width, height):
         ])
     else:
         raise Exception("Invalid skew direction")
-        return 0
     # return the modified image
     return cv2.warpPerspective(img, m_shearing, (int(width*1.5), int(height*1.5)))
     
@@ -92,11 +93,12 @@ def main():
     if uploaded_file is not None:
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         
-        x = int(st.sidebar.slider("Translation_x", 0, 2000, 0))
-        y = int(st.sidebar.slider("Translation_y", 0, 2000, 0))
+        x = int(st.sidebar.slider("Translation_x", -1000, 1000, 0))
+        y = int(st.sidebar.slider("Translation_y", -1000, 1000, 0))
         rot = int(st.sidebar.slider("Rotation", 0, 90, 45))
         xScale = float(st.sidebar.slider("X-axis scale", 0.0, 1.0, 1.0))
         yScale = float(st.sidebar.slider("Y-axis scale", 0.0, 1.0, 1.0))
+        flip_dir = st.sidebar.radio("Flip Direction", ("Vertical", "Horizontal", "No flip"))
         skew = float(st.sidebar.slider("Skew Amount", -1.0, 1.0, 0.0))
         skew_dir = st.sidebar.radio("Skew Direction", ("Vertical", "Horizontal"))
         
@@ -107,7 +109,7 @@ def main():
         width = img_.shape[0]
         height = img_.shape[1]
 
-        functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, 'vertical', width, height), Shear(img_, skew_dir, skew, width, height)]
+        functions = [Translation(img_, x, y, width, height), Rotation(img_, rot, width, height), Scaling(img_, xScale, yScale, width, height), Reflection(img_, flip_dir, width, height), Shear(img_, skew_dir, skew, width, height)]
 
         for f in functions:
             img_ = cv2.imdecode(file_bytes, 1)

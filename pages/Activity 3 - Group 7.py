@@ -92,15 +92,15 @@ def main():
     if uploaded_file is not None:
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         
-        x = int(st.sidebar.slider("Translation_x", 0, 2000, 500))
-        y = int(st.sidebar.slider("Translation_y", 0, 2000, 500))
+        x = int(st.sidebar.slider("Translation_x", 0, 2000, 0))
+        y = int(st.sidebar.slider("Translation_y", 0, 2000, 0))
         rot = int(st.sidebar.slider("Rotation", 0, 90, 45))
         xScale = float(st.sidebar.slider("X-axis scale", 0.0, 1.0, 1.0))
         yScale = float(st.sidebar.slider("Y-axis scale", 0.0, 1.0, 1.0))
         skew = float(st.sidebar.slider("Skew Amount", -1.0, 1.0, 0.0))
         skew_dir = st.sidebar.radio("Skew Direction", ("Vertical", "Horizontal"))
         
-        
+
         img_ = cv2.imdecode(file_bytes, 1)
         img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 

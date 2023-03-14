@@ -17,8 +17,8 @@ def Translation(img, x, y):
 def main():
     BXold = 0
     BYold = 0
-    Tx = int(input("Enter translation-x: "))
-    Ty = int(input("Enter translation-y: "))
+    Tx = int(st.sidebar.slider("Enter translation-x: ", -1000, 1000, 0))
+    Ty = int(st.sidebar.slider("Enter translation-y: ", -1000, 1000, 0))
     BXnew = BXold + Tx
     BYnew = BYold + Ty
     

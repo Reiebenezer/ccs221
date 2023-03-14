@@ -15,18 +15,20 @@ def Translation(img, x, y):
     return cv2.warpPerspective(img, m_translation, (width, height))
 
 def main():
-    BXold = 0
-    BYold = 0
-    Tx = int(st.sidebar.slider("Enter translation-x: ", -1000, 1000, 0))
-    Ty = int(st.sidebar.slider("Enter translation-y: ", -1000, 1000, 0))
-    BXnew = BXold + Tx
-    BYnew = BYold + Ty
-    
-    # fig, axs = plt.subplots(2, 5)
-    # plt.rcParams.update({'font.size': 7})
     image = st.sidebar.file_uploader("Choose an image", type=['png', 'jpg', 'jpeg'])
 
     if image is not None:
+
+        BXold = 0
+        BYold = 0
+        Tx = int(st.sidebar.slider("Enter translation-x: ", -1000, 1000, 0))
+        Ty = int(st.sidebar.slider("Enter translation-y: ", -1000, 1000, 0))
+        BXnew = BXold + Tx
+        BYnew = BYold + Ty
+        
+        
+        # fig, axs = plt.subplots(2, 5)
+        # plt.rcParams.update({'font.size': 7})
         image_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
 
         img = cv2.imdecode(image_bytes, 1)

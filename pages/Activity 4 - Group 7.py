@@ -107,7 +107,7 @@ def translate_obj(points, amount):
     return tf.add(points, amount)
 
 def main():
-    option = st.selectbox("Select a 3D shape", "cube", "pyramid", "diamond", "hexagonal prism")
+    option = st.selectbox("Select a 3D shape", ("cube", "pyramid", "diamond", "hexagonal prism"))
 
     if option == "cube":
         _init_shape_ = _cube_(side_length=4)

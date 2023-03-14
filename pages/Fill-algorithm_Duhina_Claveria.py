@@ -37,7 +37,7 @@ if __name__ == '__main__':
         st.set_option('deprecation.showPyplotGlobalUse', False)
         st.pyplot()
         
-    if st.button("Click to set pixel color"):
+    else:
         row = int(st.number_input("Enter Row (from 1 to 3)\n>>> "))
         column = int(st.number_input("Enter  Column (from 1 to 3)\n>>> "))
         color = float(st.number_input("Enter Color Value (from 0 to 5)\nNOTE: must be integer!\n>>> "))

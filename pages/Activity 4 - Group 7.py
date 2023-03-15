@@ -191,9 +191,9 @@ def main():
 
     elif transform_type == "Scaling":
         scale_amount = tf.constant([
-            int(st.sidebar.slider("x-scale", 0, 10, 5)), 
-            int(st.sidebar.slider("y-scale", 0, 10, 5)), 
-            int(st.sidebar.slider("z-scale", 0, 10, 5))
+            int(st.sidebar.slider("x-scale", 0, 10, 1)), 
+            int(st.sidebar.slider("y-scale", 0, 10, 1)), 
+            int(st.sidebar.slider("z-scale", 0, 10, 1))
         ], dtype=tf.float32)
 
         scaled_object = scale_obj(points, scale_amount)

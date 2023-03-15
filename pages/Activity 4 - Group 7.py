@@ -106,6 +106,18 @@ def _hexagonal_prism_(bottom_lower=(0, 0, 0), side_length=5):
 def translate_obj(points, amount):
     return tf.add(points, amount)
 
+def rotate_obj(points, angle):
+    angle = float(angle)
+    rotation_matrix = tf.stack([
+        [tf.cos(angle), tf.sin(angle), 0],
+        [-tf.sin(angle), tf.cos(angle), 0],
+        [0, 0, 1]
+    ])
+    rotated_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(rotation_matrix, tf.float32))
+
+    return rotated_object
+
+
 def main():
     option = st.sidebar.selectbox("Select a 3D shape", ("cube", "pyramid", "diamond", "hexagonal prism"), 0)
 
@@ -129,11 +141,13 @@ def main():
         int(st.sidebar.number_input("Enter z-translation"))
         ], dtype=tf.float32)
     translated_object = translate_obj(points, translation_amount)
+    angle = st.sidebar.slider("Angle", 0, 89, 0)
 
     with tf.compat.v1.Session() as session:
-        translated_cube = session.run(translated_object)
+        final_object = session.run(translated_object)
+        final_object = session.run(rotate_obj(translated_object, angle))
 
-    _plt_basic_object_(translated_cube)
+    _plt_basic_object_(final_object)
 
 if __name__ == '__main__':
     main()

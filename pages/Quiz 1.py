@@ -48,7 +48,11 @@ def main():
         # st.set_option('deprecation.showPyplotGlobalUse', False)
         # st.pyplot(fig)
 
-        st.image([img1, img2])
+        st.title("Original Image")
+        st.image(img1)
+
+        st.title("Translated Image")
+        st.image(img2)
 
 if __name__ == '__main__':
     main()

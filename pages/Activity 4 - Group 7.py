@@ -145,7 +145,7 @@ def main():
 
     with tf.compat.v1.Session() as session:
         final_object = session.run(translated_object)
-        final_object = session.run(rotate_obj(translated_object, angle))
+        final_object = session.run(rotate_obj(points, angle))
 
     _plt_basic_object_(final_object)
 

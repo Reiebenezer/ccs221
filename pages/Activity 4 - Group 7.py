@@ -103,6 +103,7 @@ def _hexagonal_prism_(bottom_lower=(0, 0, 0), side_length=5):
 
     return points
 
+# Transformations
 def translate_obj(points, amount):
     return tf.add(points, amount)
 
@@ -117,7 +118,38 @@ def rotate_obj(points, angle):
 
     return rotated_object
 
+def scale_obj(points, amount):
+    return tf.multiply(points, amount)
 
+def shear_obj_y(points, y_old, y_new, z_old, z_new):
+    sh_y = tf.multiply(y_old, y_new)
+    sh_z = tf.multiply(z_old, z_new)
+
+    shear_points = tf.stack([
+        [sh_y, 0, 0],
+        [sh_z, 1, 0],
+        [0, 0, 1]
+    ])
+
+    sheared_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(shear_points, tf.float32))
+
+    return sheared_object
+
+def shear_obj_x(points, x_old, x_new, z_old, z_new):
+    sh_x = tf.multiply(x_old, x_new)
+    sh_z = tf.multiply(z_old, z_new)
+
+    shear_points = tf.stack([
+        [1, sh_x, 0],
+        [0, 1, 0],
+        [0, sh_z, 1]
+    ])
+
+    sheared_object = tf.matmul(tf.cast(points, tf.float32), tf.cast(shear_points, tf.float32))
+
+    return sheared_object
+
+# Main function
 def main():
     option = st.sidebar.selectbox("Select a 3D shape", ("cube", "pyramid", "diamond", "hexagonal prism"), 0)
 
@@ -136,13 +168,13 @@ def main():
 
     points = tf.constant(_init_shape_, dtype=tf.float32)
 
-    transform_type = st.sidebar.radio("Type of transformation", ("Translation", "Rotation", "Scaling", "Shear"))
+    transform_type = st.sidebar.radio("Type of transformation", ("Translation", "Rotation", "Scaling", "Shear-x", "Shear-y"))
 
     if transform_type == "Translation":
         translation_amount = tf.constant([
-            int(st.sidebar.slider("Enter x-translation", -10, 10, 0)), 
-            int(st.sidebar.slider("Enter y-translation", -10, 10, 0)), 
-            int(st.sidebar.slider("Enter z-translation", -10, 10, 0))
+            int(st.sidebar.slider("x-translation", -10, 10, 0)), 
+            int(st.sidebar.slider("y-translation", -10, 10, 0)), 
+            int(st.sidebar.slider("z-translation", -10, 10, 0))
             ], dtype=tf.float32)
         translated_object = translate_obj(points, translation_amount)
     
@@ -158,12 +190,38 @@ def main():
             final_object = session.run(rotated_object)
 
     elif transform_type == "Scaling":
-        pass
+        scale_amount = tf.constant([
+            int(st.sidebar.slider("x-scale", 0, 10, 5)), 
+            int(st.sidebar.slider("y-scale", 0, 10, 5)), 
+            int(st.sidebar.slider("z-scale", 0, 10, 5))
+        ], dtype=tf.float32)
 
-    elif transform_type == "Shear":
-        pass
+        scaled_object = scale_obj(points, scale_amount)
 
-    
+        with tf.compat.v1.Session() as session:
+            final_object = session.run(scaled_object)
+
+    elif transform_type == "Shear-x":
+        sheared_object = shear_obj_x(points, 
+        float(st.sidebar.slider("Old X", -1.0, 1.0, 0)),
+        float(st.sidebar.slider("New X", -1.0, 1.0, 0)),
+        float(st.sidebar.slider("Old Z", -1.0, 1.0, 0)),
+        float(st.sidebar.slider("New Z", -1.0, 1.0, 0))
+        )
+        with tf.compat.v1.Session() as session:
+            final_object = session.run(sheared_object)
+
+    elif transform_type == "Shear-y":
+        sheared_object = shear_obj_y(points, 
+        float(st.sidebar.slider("Old Y", -1.0, 1.0, 0)),
+        float(st.sidebar.slider("New Y", -1.0, 1.0, 0)),
+        float(st.sidebar.slider("Old Z", -1.0, 1.0, 0)),
+        float(st.sidebar.slider("New Z", -1.0, 1.0, 0))
+        )
+        
+        with tf.compat.v1.Session() as session:
+            final_object = session.run(sheared_object)
+
     _plt_basic_object_(final_object)
 
 if __name__ == '__main__':

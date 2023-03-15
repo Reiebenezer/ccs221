@@ -13,8 +13,8 @@ def _plt_basic_object_(points):
 
     fig = plt.figure(figsize=(8, 8))
     ax = fig.add_subplot(111, projection='3d')
-    ax.set_xlabel("X-axis")
-    ax.set_ylabel("Y-axis")
+    ax.set_ylabel("X-axis")
+    ax.set_xlabel("Y-axis")
     ax.set_zlabel("Z-axis")
     S = ax.plot_trisurf(points[:,0], points[:,1], points[:, 2],
                         triangles=tri,
@@ -204,9 +204,9 @@ def main():
     elif transform_type == "Shear-x":
         sheared_object = shear_obj_x(points, 
         1,
-        int(st.sidebar.slider("New X", -4, 4, 1)),
         1,
-        int(st.sidebar.slider("New Z", -4, 4, 1))
+        1,
+        int(st.sidebar.slider("Amount", -4, 4, 1))
         )
         with tf.compat.v1.Session() as session:
             final_object = session.run(sheared_object)
@@ -214,9 +214,9 @@ def main():
     elif transform_type == "Shear-y":
         sheared_object = shear_obj_y(points, 
         1,
-        int(st.sidebar.slider("New Y", -4, 4, 1)),
         1,
-        int(st.sidebar.slider("New Z", -4, 4, 1))
+        1,
+        int(st.sidebar.slider("Amount", -4, 4, 1))
         )
 
         with tf.compat.v1.Session() as session:

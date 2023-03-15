@@ -113,12 +113,8 @@ def main():
 
         for f in functions:
             img_ = cv2.imdecode(file_bytes, 1)
-            # img_ = cv2.cvtColor(img_, cv2.COLOR_BGR2RGB)
 
             img_ = f
-            # plt.axis('off')
-            # plt.imshow(img_)
-            # plt.show()
             st.image(img_, cv2.COLOR_BGR2RGB)
 
 if __name__ == '__main__':

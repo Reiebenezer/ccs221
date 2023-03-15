@@ -136,9 +136,9 @@ def main():
 
     points = tf.constant(_init_shape_, dtype=tf.float32)
     translation_amount = tf.constant([
-        int(st.sidebar.number_input("Enter x-translation")), 
-        int(st.sidebar.number_input("Enter y-translation")), 
-        int(st.sidebar.number_input("Enter z-translation"))
+        int(st.sidebar.slider("Enter x-translation", 0, 10, 0)), 
+        int(st.sidebar.slider("Enter y-translation", 0, 10, 0)), 
+        int(st.sidebar.slider("Enter z-translation", 0, 10, 0))
         ], dtype=tf.float32)
     translated_object = translate_obj(points, translation_amount)
     angle = st.sidebar.slider("Angle", 0, 89, 0)

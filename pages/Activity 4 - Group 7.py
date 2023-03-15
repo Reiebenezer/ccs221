@@ -142,10 +142,11 @@ def main():
         ], dtype=tf.float32)
     translated_object = translate_obj(points, translation_amount)
     angle = st.sidebar.slider("Angle", 0, 89, 0)
+    rotated_object = rotate_obj(points, angle)
 
     with tf.compat.v1.Session() as session:
         final_object = session.run(translated_object)
-        final_object = session.run(rotate_obj(points, angle))
+        final_object = session.run(rotated_object)
 
     _plt_basic_object_(final_object)
 

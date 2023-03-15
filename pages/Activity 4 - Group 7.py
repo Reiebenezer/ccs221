@@ -20,9 +20,9 @@ def _plt_basic_object_(points):
                         triangles=tri,
                         shade=True, cmap=cm.Spectral, lw=0.5)
 
-    ax.set_xlim3d(0, 10)
-    ax.set_ylim3d(0, 10)
-    ax.set_zlim3d(0, 10)
+    ax.set_xlim3d(-10, 10)
+    ax.set_ylim3d(-10, 10)
+    ax.set_zlim3d(-10, 10)
 
     st.pyplot(fig)
 
@@ -136,9 +136,9 @@ def main():
 
     points = tf.constant(_init_shape_, dtype=tf.float32)
     translation_amount = tf.constant([
-        int(st.sidebar.slider("Enter x-translation", 0, 10, 0)), 
-        int(st.sidebar.slider("Enter y-translation", 0, 10, 0)), 
-        int(st.sidebar.slider("Enter z-translation", 0, 10, 0))
+        int(st.sidebar.slider("Enter x-translation", -10, 10, 0)), 
+        int(st.sidebar.slider("Enter y-translation", -10, 10, 0)), 
+        int(st.sidebar.slider("Enter z-translation", -10, 10, 0))
         ], dtype=tf.float32)
     translated_object = translate_obj(points, translation_amount)
     # angle = st.sidebar.slider("Angle", 0, 89, 0)

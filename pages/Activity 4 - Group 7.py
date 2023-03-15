@@ -203,22 +203,22 @@ def main():
 
     elif transform_type == "Shear-x":
         sheared_object = shear_obj_x(points, 
-        float(st.sidebar.slider("Old X", -1.0, 1.0, 0)),
-        float(st.sidebar.slider("New X", -1.0, 1.0, 0)),
-        float(st.sidebar.slider("Old Z", -1.0, 1.0, 0)),
-        float(st.sidebar.slider("New Z", -1.0, 1.0, 0))
+        float(st.sidebar.slider("Old X", -1.0, 1.0, 0.0)),
+        float(st.sidebar.slider("New X", -1.0, 1.0, 0.0)),
+        float(st.sidebar.slider("Old Z", -1.0, 1.0, 0.0)),
+        float(st.sidebar.slider("New Z", -1.0, 1.0, 0.0))
         )
         with tf.compat.v1.Session() as session:
             final_object = session.run(sheared_object)
 
     elif transform_type == "Shear-y":
         sheared_object = shear_obj_y(points, 
-        float(st.sidebar.slider("Old Y", -1.0, 1.0, 0)),
-        float(st.sidebar.slider("New Y", -1.0, 1.0, 0)),
-        float(st.sidebar.slider("Old Z", -1.0, 1.0, 0)),
-        float(st.sidebar.slider("New Z", -1.0, 1.0, 0))
+        float(st.sidebar.slider("Old Y", -1.0, 1.0, 0.0)),
+        float(st.sidebar.slider("New Y", -1.0, 1.0, 0.0)),
+        float(st.sidebar.slider("Old Z", -1.0, 1.0, 0.0)),
+        float(st.sidebar.slider("New Z", -1.0, 1.0, 0.0))
         )
-        
+
         with tf.compat.v1.Session() as session:
             final_object = session.run(sheared_object)
 

@@ -204,9 +204,9 @@ def main():
     elif transform_type == "Shear-x":
         sheared_object = shear_obj_x(points, 
         1,
-        float(st.sidebar.slider("New X", -4, 4, 1)),
+        int(st.sidebar.slider("New X", -4, 4, 1)),
         1,
-        float(st.sidebar.slider("New Z", -4, 4, 1))
+        int(st.sidebar.slider("New Z", -4, 4, 1))
         )
         with tf.compat.v1.Session() as session:
             final_object = session.run(sheared_object)
@@ -214,9 +214,9 @@ def main():
     elif transform_type == "Shear-y":
         sheared_object = shear_obj_y(points, 
         1,
-        float(st.sidebar.slider("New Y", -4, 4, 1)),
+        int(st.sidebar.slider("New Y", -4, 4, 1)),
         1,
-        float(st.sidebar.slider("New Z", -4, 4, 1))
+        int(st.sidebar.slider("New Z", -4, 4, 1))
         )
 
         with tf.compat.v1.Session() as session:

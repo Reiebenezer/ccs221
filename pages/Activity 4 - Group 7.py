@@ -135,19 +135,35 @@ def main():
         
 
     points = tf.constant(_init_shape_, dtype=tf.float32)
-    translation_amount = tf.constant([
-        int(st.sidebar.slider("Enter x-translation", -10, 10, 0)), 
-        int(st.sidebar.slider("Enter y-translation", -10, 10, 0)), 
-        int(st.sidebar.slider("Enter z-translation", -10, 10, 0))
-        ], dtype=tf.float32)
-    translated_object = translate_obj(points, translation_amount)
-    # angle = st.sidebar.slider("Angle", 0, 89, 0)
-    # rotated_object = rotate_obj(points, angle)
 
-    with tf.compat.v1.Session() as session:
-        final_object = session.run(translated_object)
-        # final_object = session.run(rotated_object)
+    transform_type = st.sidebar.radio("Type of transformation", ("Translation", "Rotation", "Scaling", "Shear"))
 
+    if transform_type == "Translation":
+        translation_amount = tf.constant([
+            int(st.sidebar.slider("Enter x-translation", -10, 10, 0)), 
+            int(st.sidebar.slider("Enter y-translation", -10, 10, 0)), 
+            int(st.sidebar.slider("Enter z-translation", -10, 10, 0))
+            ], dtype=tf.float32)
+        translated_object = translate_obj(points, translation_amount)
+    
+        with tf.compat.v1.Session() as session:
+            final_object = session.run(translated_object)
+    
+    elif transform_type == "Rotation":
+
+        angle = st.sidebar.slider("Angle", 0, 89, 0)
+        rotated_object = rotate_obj(points, angle)
+
+        with tf.compat.v1.Session() as session:
+            final_object = session.run(rotated_object)
+
+    elif transform_type == "Scaling":
+        pass
+
+    elif transform_type == "Shear":
+        pass
+
+    
     _plt_basic_object_(final_object)
 
 if __name__ == '__main__':

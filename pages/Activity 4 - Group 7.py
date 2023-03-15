@@ -13,9 +13,7 @@ def _plt_basic_object_(points):
 
     fig = plt.figure(figsize=(8, 8))
     ax = fig.add_subplot(111, projection='3d')
-    ax.set_ylabel("X-axis")
-    ax.set_xlabel("Y-axis")
-    ax.set_zlabel("Z-axis")
+    
     S = ax.plot_trisurf(points[:,0], points[:,1], points[:, 2],
                         triangles=tri,
                         shade=True, cmap=cm.Spectral, lw=0.5)
